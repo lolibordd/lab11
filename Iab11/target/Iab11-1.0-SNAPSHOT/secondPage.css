@@ -1,0 +1,37 @@
+.wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-right: auto;
+    margin-left: auto;
+
+    max-width: 960px;
+
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.home{
+    text-align: center;
+}
+body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+
+form{
+    margin-top: 3em;
+    padding-top: 3em;
+}
+.main{
+
+    margin-right: auto;
+    margin-left: auto;
+
+    max-width: 960px;
+
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.text{
+    text-align: center;
+}

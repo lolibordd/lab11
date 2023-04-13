@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+   <h:head>
+   </h:head>
+   <body>
+   <div class="home">
+      <p:tabMenu activeIndex="#{param.i}">
+         <p:menuitem value="Home" outcome="index">
+            <f:param name="i" value="0"/>
+         </p:menuitem>
+         <p:menuitem value="Список пацієнтів, які мають вказаний діагноз в порядку зростання номерів медичної картки" outcome="page2.xhtml" >
+            <f:param name="i" value="0"/>
+         </p:menuitem>
+         <p:menuitem value="Список пацієнтів, номер медичної карти у яких знаходиться в заданому інтервалі" outcome="page3.xhtml">
+            <f:param name="i" value="0"/>
+         </p:menuitem>
+         <p:menuitem value=" Кількість та список пацієнтів, номер телефона яких починається з вказаної цифри" outcome="page4.xhtml">
+            <f:param name="i" value="0"/>
+         </p:menuitem>
+         <p:menuitem value="Список діагнозів пацієнтів (без повторів) із вказанням кількості пацієнтів, що мають цей діагноз у порядку спадання цієї кількості" outcome="page5.xhtml">
+            <f:param name="i" value="0"/>
+         </p:menuitem>
+         <p:menuitem value="Список діагнозів пацієнтів, зареєстрованих у системі без повторів" outcome="page6.xhtml">
+            <f:param name="i" value="0"/>
+         </p:menuitem>
+         <p:menuitem value="Для кожного діагнозу визначити кількість пацієнтів, яким він поставлений" outcome="page7.xhtml">
+            <f:param name="i" value="0"/>
+         </p:menuitem>
+      </p:tabMenu>
+   </div>
+   <div class="main">
+      <div class="wrapper">
+
+         <h:form id="findPatientsByCardNumberRange">
+            <p:outputLabel value="Номер медичної карти знаходиться у інтервалі від" for="start"  />
+            <p:inputText  required="true"  value="#{patientBean.start}" id="start"/>
+            <p:outputLabel value="До" for="end"  />
+            <p:inputText  required="true"  value="#{patientBean.end}" id="end"/>
+            <p:commandButton value="Знайти" ajax="false" style="margin: 10px" />
+
+         </h:form>
+         <p:dataTable value ="#{patientBean.findPatientsByCardNumberRange()}" var ="p" stripedRows="true" size="small">
+            <p:column headerText="ID">
+               <h:outputText value="#{p.id}"/>
+            </p:column>
+            <p:column headerText="Повне ім'я">
+               <h:outputText value="#{p.fullName}"/>
+            </p:column>
+            <p:column headerText="Адреса">
+               <h:outputText value="#{p.address}"/>
+            </p:column>
+            <p:column headerText="Номер телефону">
+               <h:outputText value="#{p.phoneNumber}"/>
+            </p:column>
+            <p:column headerText="Номер медичної картки">
+               <h:outputText value="#{p.cardNumber}"/>
+            </p:column>
+            <p:column headerText="Діагноз">
+               <h:outputText value="#{p.diagnosis}"/>
+            </p:column>
+         </p:dataTable>
+      </div>
+   </div>
+   </body>
+</f:view>
+</html>
